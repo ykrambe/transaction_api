@@ -181,6 +181,8 @@ router.put(
       password: null
     })
 
+    await getUser.save()
+
     res.status(201).send({ 
 			status: "success",
       message: "User Successfully updated !",

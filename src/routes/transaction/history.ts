@@ -13,11 +13,13 @@
  *        name: page
  *        schema:
  *          type: integer
+ *          default: 1
  *        required: true
  *      - in: query
  *        name: limit
  *        schema:
  *          type: integer
+ *          default: 10
  *        required: true
  * 
  *     responses:
