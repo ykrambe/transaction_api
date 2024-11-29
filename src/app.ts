@@ -5,7 +5,6 @@ import helmet from 'helmet';
 import hpp from 'hpp';
 import cors from 'cors';
 
-import { errorHandler } from '@phibase/common-v2';
 
 import express from 'express'
 const bodyParser = require('body-parser');
@@ -49,7 +48,6 @@ const routeDir = './routes';
   app.use(hpp());
   app.use(cors());
 
-  app.use(errorHandler);
 
 
 
