@@ -6,8 +6,9 @@
   "scripts": {
     "test": "jest --verbose",
     "test:ci": "jest",
-    "start": "ts-node src/index.ts",
-    "dev": "nodemon"
+    "start": "node build/index.js",
+    "dev": "nodemon",
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",
