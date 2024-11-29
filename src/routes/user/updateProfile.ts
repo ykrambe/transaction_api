@@ -178,10 +178,13 @@ router.put(
     getUser.set({
       firstName,
       lastName,
-      password: null
     })
 
     await getUser.save()
+
+    getUser.set({
+      password: null
+    })
 
     res.status(201).send({ 
 			status: "success",
