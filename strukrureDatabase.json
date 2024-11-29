@@ -1,0 +1,55 @@
+{
+  "Table User": {
+    "firstName": "String",
+    "lastName": "String",
+    "email": "String",
+    "password": "String",
+    "profileImage": "String",
+    "createdAt": "Date",
+    "updatedAt": "Date"
+  },
+
+  "Table Wallet": {
+    "userId": "ObjectId",
+    "balance":"Number",
+    "currency":"String",
+    "createdAt":"Date",
+    "updatedAt":"Date"
+  },
+
+  "Table Transaction": {
+    "userId": "ObjectId",
+    "invoiceNumber": "String",
+    "transactionType": "String",
+    "totalAmount": "Number",
+    "description": "String",
+    "serviceCode": "String",
+    "createdAt": "Date",
+    "updatedAt": "Date"
+  },
+
+  "Table Service": {
+    "serviceCode": "String",
+    "serviceName": "String",
+    "serviceIcon": "String",
+    "serviceTarif": "Number",
+    "createdAt": "Date",
+    "updatedAt": "Date"
+  },
+
+  "Table Banner": {
+    "bannerName": "String",
+    "bannerImage": "String",
+    "description": "String",
+    "createdAt": "Date",
+    "updatedAt": "Date"
+  },
+
+  "Table Authencation": {
+    "userId": "ObjectId",
+    "token": "String",
+    "expiresAt": "Date",
+    "revokedAt": "Date",
+    "createdAt": "Date"
+  }
+}
