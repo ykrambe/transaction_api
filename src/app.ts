@@ -1,10 +1,8 @@
 import cookieSession from 'cookie-session';
 import 'express-async-errors';
 import mongoSanitize from 'express-mongo-sanitize';
-import helmet from 'helmet';
 import hpp from 'hpp';
 import cors from 'cors';
-import { applyRoute } from './routes/routes';
 
 
 import express from 'express'
@@ -27,27 +25,30 @@ async function createApp(): Promise<any> {
     }),
   );
   app.use(mongoSanitize());
-  app.use(helmet());
   app.use(xss());
 
 const extension = 'ts';
 const routeDir = './routes';
 
 
-  // fs.readdirSync(__dirname + '/routes').forEach(module => {
-  //   fs.readdirSync(__dirname + '/routes/' + module).forEach(router => {
-  //     if (router.split('.').pop() === extension) {
-  //       const routerPath = `${routeDir}/${module}/${router}`;
-  //       const createdRouter = require(routerPath);
-  //       const routerName = Object.keys(createdRouter)[0];
-  //       app.use(createdRouter[routerName]);
-  //     }
-  //   });
-  // });
+  fs.readdirSync(__dirname + '/routes').forEach(module => {
+    fs.readdirSync(__dirname + '/routes/' + module).forEach(router => {
+      if (router.split('.').pop() === extension) {
+        const routerPath = `${routeDir}/${module}/${router}`;
+        const createdRouter = require(routerPath);
+        const routerName = Object.keys(createdRouter)[0];
+        app.use(createdRouter[routerName]);
+      }
+    });
+  });
 
-  applyRoute(app)
+  
   app.use(hpp());
   app.use(cors());
+
+
+
+
   return app;
 }
 

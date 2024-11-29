@@ -25,7 +25,7 @@ const options = {
       },
     },
   },
-  apis: ['./src/routes/**/*.js'], // Path ke file berisi anotasi Swagger
+  apis: ['./src/routes/**/*.ts'], // Path ke file berisi anotasi Swagger
 };
 
 const swaggerSpec = swaggerJsdoc(options);
