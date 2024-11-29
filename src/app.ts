@@ -1,7 +1,6 @@
 import cookieSession from 'cookie-session';
 import 'express-async-errors';
 import mongoSanitize from 'express-mongo-sanitize';
-import helmet from 'helmet';
 import hpp from 'hpp';
 import cors from 'cors';
 
@@ -26,7 +25,6 @@ async function createApp(): Promise<any> {
     }),
   );
   app.use(mongoSanitize());
-  app.use(helmet());
   app.use(xss());
 
 const extension = 'ts';
