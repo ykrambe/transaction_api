@@ -6,8 +6,10 @@
   "scripts": {
     "test": "jest --verbose",
     "test:ci": "jest",
-    "start": "ts-node src/index.ts",
-    "dev": "nodemon"
+    "start": "ts-node-dev --transpile-only --poll src/index.ts",
+    "production": "node dist/src/index.js",
+    "dev": "nodemon",
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",
@@ -38,7 +40,6 @@
     "swagger-ui-express": "^5.0.1",
     "ts-node": "10.4.0",
     "ts-node-dev": "1.1.8",
-    "typescript": "4.4.4",
     "workerpool": "6.1.0",
     "xss-clean": "0.1.1"
   },
@@ -54,6 +55,7 @@
     "mongodb-memory-server": "8.9.3",
     "nodemailer-mock": "1.5.11",
     "supertest": "6.0.1",
-    "ts-jest": "26.4.4"
+    "ts-jest": "26.4.4",
+    "typescript": "^4.7.3"
   }
 }
