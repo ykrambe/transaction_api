@@ -10,11 +10,11 @@ const options = {
       version: '1.0.0',
       description: 'Documentation for the transaction API endpoints',
     },
-    servers: [
-      {
-        url: process.env.SERVER_URL || 'http://localhost:3000',
-      },
-    ],
+    // servers: [
+    //   {
+    //     url: process.env.SERVER_URL || 'http://localhost:3000',
+    //   },
+    // ],
     components: {
       securitySchemes: {
         bearerAuth: {
