@@ -1,0 +1,578 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Library API",
+    "version": "1.0.0",
+    "description": "API for management library"
+  },
+  "paths": {
+    "/api/books": {
+      "get": {
+        "summary": "Get Books with pagination",
+        "parameters": [
+      {
+        "name": "page",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      {
+        "name": "limit",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      }
+    ],
+        "responses": {
+          "200": {
+            "description": "get list of the books with pagination",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Book"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create new book",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "author": {
+                    "type": "string"
+                  },
+                  "stock": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Book successfully created"
+          },
+          "400": {
+            "description": "Error create new book"
+          },
+          "401": {
+            "description": "Book with this title and author already exists"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Incorrect parameters, headers, or data in the request body"
+          }
+        }
+      }
+    },
+    "/api/books/{id}": {
+      "get": {
+        "summary": "Get book with ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get detail of the book by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Book"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "401": {
+            "description": "Book with this ID is not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update book with ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "author": {
+                    "type": "string"
+                  },
+                  "stock": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update data of the book by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Book"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Incorrect parameters, headers, or data in the request body"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Book By ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Book deleted successfully"
+          },
+          "404": {
+            "description": "Book not found"
+          },
+          "401": {
+            "description": "Book with this ID is not found"
+          }
+        }
+      }
+    },
+    "/api/members": {
+      "get": {
+        "summary": "Get Members with pagination",
+        "parameters": [
+      {
+        "name": "page",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      {
+        "name": "limit",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      }
+    ],
+        "responses": {
+          "200": {
+            "description": "get list of the members with pagination",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Member"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create new member",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "job": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Member successfully created"
+          },
+          "400": {
+            "description": "Error create new Member"
+          },
+          "401": {
+            "description": "Member with this name already exists"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Incorrect parameters, headers, or data in the request body"
+          }
+        }
+      }
+    },
+    "/api/members/{id}": {
+      "get": {
+        "summary": "Get member with ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get detail of the member by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Member"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "401": {
+            "description": "Book with this ID is not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update member with ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "job": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update data of the member by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Member"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Incorrect parameters, headers, or data in the request body"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Member By ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Member deleted successfully"
+          },
+          "404": {
+            "description": "Member not found"
+          },
+          "401": {
+            "description": "Member with this ID is not found"
+          }
+        }
+      }
+    },
+    "/api/borrowing": {
+      "post": {
+        "summary": "Create borrowing",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "codeBooks": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 1,
+                    "maxItems": 2       
+                  },
+                  "codeMember": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Borrowing created successfully"
+          },
+          "400": {
+            "description": "error creating borrowing"
+          },
+          "401": {
+            "description": "member with code 'memberCode' not found"
+          },
+          "404": {
+            "description": "Not Found"
+          },       
+          "422": {
+            "description": "Incorrect parameters, headers, or data in the request body"
+          }
+        }
+      }
+    },
+    "/api/return-borrowing": {
+      "post": {
+        "summary": "Return borrowing",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "codeBooks": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 1,
+                    "maxItems": 2       
+                  },
+                  "codeMember": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Borrowing returned successfully"
+          },
+          "400": {
+            "description": "Error returned borrowing"
+          },
+          "401": {
+            "description": "Member with code 'memberCode' Not Found"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Incorrect parameters, headers, or data in the request body"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Book": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Code for the book."
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the book."
+          },
+          "stock": {
+            "type": "integer",
+            "description": "Stock of the book."
+          },
+          "author": {
+            "type": "string",
+            "description": "Author of the book."
+          }          
+        },
+        "required": ["code", "title", "stock", "author"]
+      },
+      "Member": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Code for the member."
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the member."
+          },
+          "address": {
+            "type": "string",
+            "description": "Address of the member."
+          },
+          "job": {
+            "type": "integer",
+            "description": "Job of the member."
+          },
+          "status": {
+            "type": "string",
+            "description": "Status to defind the member. active or inactive (penalized)."
+          },
+          "inactiveUntil": {
+            "type": "date",
+            "description": "Date for when the member will be inactive (penalized)."
+          }       
+        },
+        "required": ["name", "address", "job", "status"]
+      },
+      "Borrowing": {
+        "type": "object",
+        "properties": {
+          "member": {
+            "type": "string",
+            "description": "Reference to the Member (ObjectId)."
+          },
+          "books": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "Reference to the Book (ObjectId)."
+                },
+                "code": {
+                  "type": "string",
+                  "description": "Code of the book."
+                },
+                "status": {
+                  "type": "string",
+                  "enum": ["Borrowed", "Returned"],
+                  "description": "Status of the borrowed book."
+                }
+              }
+            }
+          },
+          "borrowDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date when the borrowing started."
+          },
+          "returnDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date when the book was returned."
+          },
+          "status": {
+            "type": "string",
+            "enum": ["Process", "Done"],
+            "description": "Status of the borrowing processing or done"
+          }
+        },
+        "required": ["member", "books", "borrowDate", "status"]
+      }
+    }
+  }
+}
