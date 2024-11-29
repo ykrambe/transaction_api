@@ -4,10 +4,9 @@
   "description": "transactions api gateway",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose",
-    "test:ci": "jest",
     "start": "ts-node src/index.ts",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",
